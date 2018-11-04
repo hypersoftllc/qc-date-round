@@ -13,6 +13,18 @@ yarn add @qc/date-round
 ```
 
 
+## Usage
+
+```js
+import { round } from '@qc/date-round'
+
+let dateIn = new Date(Date.UTC(2000, 0, 1, 2, 34, 56))
+let interval = 60 * 60 * 1000
+let dateOut = round(dateIn, interval)
+dateIn === dateOut; // false
+```
+
+
 ## Examples
 
 **Nearest Hour**
