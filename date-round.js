@@ -23,30 +23,17 @@ exports.round = function round (timeIn, interval) {
   This implementation relies upon the fact that the setters of a date object
   rollover its value to the next larger time unit.
   */
-  let hhBorrowed = false
-  let mmBorrowed = false
-  let ssBorrowed = false
   let ms = dateIn.getMilliseconds()
   if (ms < interval) {
-    ssBorrowed = true
     ms += (dateIn.getSeconds() * 1000)
-  }
-  if (ms < interval) {
-    mmBorrowed = true
-    ms += (dateIn.getMinutes() * 1000 * 60)
-  }
-  if (ms < interval) {
-    hhBorrowed = true
-    ms += (dateIn.getHours() * 1000 * 60 * 60)
-  }
-
-  if (ssBorrowed) {
     dateOut.setSeconds(0)
   }
-  if (mmBorrowed) {
+  if (ms < interval) {
+    ms += (dateIn.getMinutes() * 1000 * 60)
     dateOut.setMinutes(0)
   }
-  if (hhBorrowed) {
+  if (ms < interval) {
+    ms += (dateIn.getHours() * 1000 * 60 * 60)
     dateOut.setHours(0)
   }
   dateOut.setMilliseconds(Math.round(ms / interval) * interval)
