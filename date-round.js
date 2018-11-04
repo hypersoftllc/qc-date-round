@@ -16,26 +16,7 @@ exports.round = function round (timeIn, interval) {
   if (typeof timeIn === 'number' && !Number.isNaN(timeIn)) {
     dateIn = new Date(timeIn)
   }
-  const dateOut = new Date(timeIn)
 
-  /*
-  IMPLEMENTATION NOTE:
-  This implementation relies upon the fact that the setters of a date object
-  rollover its value to the next larger time unit.
-  */
-  let ms = dateIn.getMilliseconds()
-  if (ms < interval) {
-    ms += (dateIn.getSeconds() * 1000)
-    dateOut.setSeconds(0)
-  }
-  if (ms < interval) {
-    ms += (dateIn.getMinutes() * 1000 * 60)
-    dateOut.setMinutes(0)
-  }
-  if (ms < interval) {
-    ms += (dateIn.getHours() * 1000 * 60 * 60)
-    dateOut.setHours(0)
-  }
-  dateOut.setMilliseconds(Math.round(ms / interval) * interval)
+  const dateOut = new Date(Math.round(dateIn.getTime() / interval) * interval)
   return dateOut
 }
