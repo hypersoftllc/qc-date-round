@@ -183,4 +183,20 @@ describe('round', () => {
       expect(dateOut.getTime()).to.equal(Date.UTC(2000, 1, 2, 4, 0, 0))
     })
   })
+
+  describe('called with 360000', () => {
+    it('should round to nearest hour', () => {
+      let dateIn
+      let dateOut
+      let interval = 60 * 60 * 1000
+
+      dateIn = new Date(Date.UTC(2000, 0, 1, 2, 34, 56))
+      dateOut = round(dateIn, interval)
+      expect(dateOut.getTime()).to.equal(Date.UTC(2000, 0, 1, 3, 0, 0))
+
+      dateIn = new Date(Date.UTC(2000, 1, 29, 2, 23, 23))
+      dateOut = round(dateIn, interval)
+      expect(dateOut.getTime()).to.equal(Date.UTC(2000, 1, 29, 2, 0, 0))
+    })
+  })
 })
