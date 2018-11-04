@@ -1,6 +1,6 @@
 # @qc/date-round
 
-Rounds a date to the nearest interval from 0 milliseconds up to 24 hours.
+Rounds a date to the nearest interval from 1 milliseconds up to 24 hours.
 
 
 ## Installation
