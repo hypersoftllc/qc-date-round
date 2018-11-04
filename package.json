@@ -1,9 +1,42 @@
 {
   "name": "@qc/date-round",
   "version": "0.0.0-alpha",
+  "description": "Rounds a date to the nearest interval.",
+  "keywords": [
+    "closest",
+    "date",
+    "hour",
+    "interval",
+    "millisecond",
+    "minute",
+    "nearest",
+    "round",
+    "second"
+  ],
+  "author": {
+    "name": "Danny Hurlburt",
+    "url": "https://github.com/dhurlburtusa"
+  },
+  "homepage": "https://github.com/hypersoftllc/qc-date-round",
+  "license": "ISC",
+  "files": [
+    "date-round.js"
+  ],
+  "main": "date-round.js",
+  "bugs": {
+    "url": "https://github.com/hypersoftllc/qc-date-round/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypersoftllc/qc-date-round.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "lint": "standard",
-    "test": "mocha"
+    "test": "mocha",
+    "prepublishOnly": "npm run lint && npm run test"
   },
   "devDependencies": {
     "chai": "^4.2.0",
